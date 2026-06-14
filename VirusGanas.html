@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Date Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+overflow-x:hidden;
+font-family:'Cormorant Garamond', serif;
+background:#f6f1eb;
+}
+
+/* =======================
+OPENING SCREEN
+======================= */
+
+#opening{
+position:fixed;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:
+radial-gradient(circle at center,
+#faf7f2,
+#f0e8de);
+z-index:9999;
+transition:1s;
+}
+
+.title{
+font-family:'Pinyon Script',cursive;
+font-size:52px;
+color:#2c2c2c;
+margin-bottom:40px;
+}
+
+.subtitle{
+font-size:14px;
+letter-spacing:4px;
+text-transform:uppercase;
+color:#777;
+margin-top:30px;
+}
+
+/* =======================
+ENVELOPE
+======================= */
+
+.envelope{
+position:relative;
+width:320px;
+height:220px;
+cursor:pointer;
+perspective:1000px;
+transition:.5s;
+}
+
+.envelope:hover{
+transform:translateY(-5px);
+}
+
+.envelope-body{
+position:absolute;
+width:100%;
+height:100%;
+background:#f6eee4;
+border-radius:12px;
+box-shadow:
+0 25px 50px rgba(0,0,0,.15);
+overflow:hidden;
+}
+
+.flap{
+position:absolute;
+width:100%;
+height:100%;
+background:#eee4d8;
+clip-path:polygon(0 0,100% 0,50% 60%);
+transform-origin:top;
+transition:1.2s ease;
+z-index:4;
+}
+
+.letter{
+position:absolute;
+left:5%;
+top:20px;
+width:90%;
+height:170px;
+background:white;
+border-radius:12px;
+z-index:2;
+padding:20px;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+transition:1.2s ease;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.letter h2{
+font-family:'Pinyon Script',cursive;
+font-size:42px;
+margin-bottom:8px;
+}
+
+.letter p{
+font-size:16px;
+color:#666;
+}
+
+/* OPEN */
+
+.envelope.open .flap{
+transform:rotateX(180deg);
+}
+
+.envelope.open .letter{
+transform:translateY(-170px);
+}
+
+/* =======================
+INVITATION IMAGE
+======================= */
+
+#invitation{
+display:none;
+opacity:0;
+min-height:100vh;
+background:#f6f1eb;
+padding:20px;
+transition:1.5s;
+}
+
+#invitation.show{
+display:block;
+opacity:1;
+animation:fadeIn 1.5s ease;
+}
+
+.invitation-container{
+max-width:1000px;
+margin:auto;
+}
+
+.invitation-container img{
+width:100%;
+display:block;
+border-radius:8px;
+box-shadow:
+0 20px 50px rgba(0,0,0,.15);
+}
+
+/* =======================
+FADE
+======================= */
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* =======================
+HEARTS
+======================= */
+
+.heart{
+position:absolute;
+font-size:20px;
+opacity:.2;
+animation:float 6s infinite ease-in-out;
+}
+
+.heart:nth-child(1){
+left:20%;
+top:20%;
+}
+
+.heart:nth-child(2){
+right:20%;
+top:25%;
+animation-delay:2s;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-20px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#f7f1ea;
+overflow-x:hidden;
+font-family:Georgia,serif;
+}
+
+/* OPENING */
+
+#opening{
+position:fixed;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:
+linear-gradient(
+135deg,
+#faf7f3,
+#eee4d8
+);
+z-index:999;
+transition:1s;
+}
+
+#opening.hide{
+opacity:0;
+pointer-events:none;
+}
+
+#opening h1{
+font-family:'Pinyon Script',cursive;
+font-size:70px;
+margin-bottom:40px;
+}
+
+#opening p{
+margin-top:30px;
+letter-spacing:3px;
+font-size:12px;
+}
+
+/* ENVELOPE */
+
+.envelope{
+width:320px;
+height:220px;
+position:relative;
+cursor:pointer;
+}
+
+.envelope::before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:#f4eadf;
+border-radius:10px;
+box-shadow:
+0 15px 40px rgba(0,0,0,.15);
+}
+
+.flap{
+position:absolute;
+width:100%;
+height:100%;
+background:#eadfd2;
+clip-path:
+polygon(0 0,100% 0,50% 60%);
+transform-origin:top;
+transition:1.2s;
+z-index:2;
+}
+
+.letter{
+position:absolute;
+width:85%;
+height:160px;
+left:7.5%;
+top:25px;
+background:white;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:8px;
+transition:1.2s;
+z-index:1;
+}
+
+.letter span{
+font-family:'Pinyon Script',cursive;
+font-size:40px;
+}
+
+.envelope.open .flap{
+transform:rotateX(180deg);
+}
+
+.envelope.open .letter{
+transform:translateY(-150px);
+}
+
+/* INVITATION */
+
+#invitation{
+display:none;
+padding:20px;
+}
+
+#invitation.show{
+display:block;
+animation:fadeIn 1.5s ease;
+}
+
+#invitation img{
+width:100%;
+max-width:1000px;
+display:block;
+margin:auto;
+box-shadow:
+0 15px 40px rgba(0,0,0,.15);
+border-radius:10px;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+</style>
+</head>
+<body>
+
+<!-- OPENING -->
+
+<div id="opening">
+
+<div class="heart">♡</div>
+<div class="heart">♡</div>
+
+<div class="title">
+A Letter For You
+</div>
+
+<div class="envelope" onclick="openLetter()">
+
+<div class="envelope-body">
+
+<div class="letter">
+<h2>For You</h2>
+<p>Click to open</p>
+</div>
+
+<div class="flap"></div>
+
+</div>
+
+</div>
+
+<div class="subtitle">
+click the envelope
+</div>
+
+</div>
+
+<!-- INVITATION -->
+
+<div id="invitation">
+
+<div class="invitation-container">
+
+
+</script>
+
+<div id="opening">
+
+    <h1>A Letter For You</h1>
+
+    <div class="envelope" onclick="openInvitation()">
+
+        <div class="flap"></div>
+
+        <div class="letter">
+            <span>For You ♡</span>
+        </div>
+
+    </div>
+
+    <p>CLICK THE ENVELOPE</p>
+
+</div>
+
+<div id="invitation">
+
+    <!-- GANTI DENGAN GAMBAR UNDANGANMU -->
+
+    <img src="invitation-bg.png" alt="Invitation">
+
+</div>
+
+<script>
+
+function openInvitation(){
+
+    document.querySelector(".envelope")
+    .classList.add("open");
+
+    setTimeout(() => {
+
+        document.getElementById("opening")
+        .classList.add("hide");
+
+        document.getElementById("invitation")
+        .classList.add("show");
+
+    }, 1500);
+
+}
+
+</script>
+
+</body>
+</html>
